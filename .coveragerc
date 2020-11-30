@@ -1,0 +1,14 @@
+[run]
+source = ./
+omit = */__init__.py 
+        .venv/*
+        manage.py
+        config.py
+        tests/*
+
+[report]
+omit = */__init__.py
+        .venv/*
+        manage.py
+        config.py
+        tests/*

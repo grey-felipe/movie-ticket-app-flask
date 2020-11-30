@@ -1,5 +1,7 @@
 import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 class CONFIG:
     SECRET_KEY = os.environ["APP_SECRET_KEY"]
@@ -15,7 +17,7 @@ class DEVELOPMENT_CONFIG(CONFIG):
 class TESTING_CONFIG(CONFIG):
     DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ["TEST_DATABASE_URI"]
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'movie_ticket_app_test.db')
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
