@@ -1,12 +1,19 @@
 import os
 import unittest
+import coverage
+import config
 
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
-from api import create_app, db
+from app.api.accounts.models import User, TokenBlacklist
+
+from app.api import create_app, db
+from app import v1_blueprint
+
 
 app = create_app(os.environ["BOILERPLATE_ENV"] or "dev")
+app.register_blueprint(v1_blueprint, url_prefix="/api/v1")
 app.app_context().push()
 
 manager = Manager(app)
@@ -27,6 +34,9 @@ def test():
     if result.wasSuccessful():
         return 0
     return 1
+
+# Test coverage command
+# pytest --cov --cov-report html tests/
 
 
 if __name__ == '__main__':

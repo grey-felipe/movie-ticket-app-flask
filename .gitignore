@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.db
 
 # C extensions
 *.so
@@ -130,3 +131,5 @@ dmypy.json
 
 # VS code
 .vscode
+coverage
+movie_ticket_app_test.db
